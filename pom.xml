@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  父项目的 POM 文件，用于管理整个多模块项目的公共配置。
+  通过此文件可以统一管理依赖版本、插件配置以及子模块列表。
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- Maven 模型版本 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 项目的组织ID，通常代表组织或公司 -->
+    <groupId>com.example.learning</groupId>
+
+    <!-- 项目ID，用于标识该父项目 -->
+    <artifactId>parent-project</artifactId>
+
+    <!-- 版本号 -->
+    <version>1.0-SNAPSHOT</version>
+
+    <!-- 指定当前项目的打包类型为 pom，即此项目只作为父工程使用 -->
+    <packaging>pom</packaging>
+
+    <!-- 项目名称 -->
+    <name>Parent Project</name>
+
+    <!-- 子模块列表 -->
+    <!-- 通过下面的 <modules> 标签来管理多个子模块，后续添加子模块时请在此处更新 -->
+    <modules>
+        <!-- 
+            示例：使用 Maven 命令生成子项目
+            mvn archetype:generate -DgroupId=com.example.learning.demo -DartifactId=demo
+        -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false 
+        -->
+        <module>demo</module>
+        <!-- 如有其他模块，可以继续添加，例如：
+             <module>another-module</module>
+        -->
+    </modules>
+
+    <!-- 可在此处添加依赖管理和插件管理 -->
+    <!-- 通过 <dependencyManagement> 标签统一管理依赖版本，
+         以及通过 <build> 中的 <pluginManagement> 统一管理插件版本 -->
+
+    <!-- 统一管理依赖版本 -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.13.2</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- 其他依赖管理项 -->
+        </dependencies>
+    </dependencyManagement>
+
+
+    <!-- 统一管理插件版本 -->
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+                <!-- 其他插件管理项 -->
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
+</project>
