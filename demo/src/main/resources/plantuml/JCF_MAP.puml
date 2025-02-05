@@ -1,0 +1,45 @@
+@startuml JCF_Map
+
+title Java Collections Framework - Map Hierarchy (Simplified)
+
+' -- Map接口 --
+interface "Map<K,V>" as Map {
+  +int size()
+  +boolean isEmpty()
+  +boolean containsKey(Object key)
+  +boolean containsValue(Object value)
+  +V get(Object key)
+  +V put(K key, V value)
+  +V remove(Object key)
+  +Set<Map.Entry<K,V>> entrySet()
+}
+
+' -- Map.Entry内部接口 --
+interface "Map.Entry<K,V>" as MapEntry {
+  +K getKey()
+  +V getValue()
+  +V setValue(V value)
+}
+
+' 用依赖关系(虚线箭头)来表示Map对Map.Entry的使用
+Map ..> MapEntry : uses (via entrySet)
+
+' -- SortedMap接口 --
+interface "SortedMap<K,V>" as SortedMap {
+  +Comparator<? super K> comparator()
+  +K firstKey()
+  +K lastKey()
+}
+Map <|-- SortedMap
+
+' -- NavigableMap接口 --
+interface "NavigableMap<K,V>" as NavigableMap {
+  +Entry<K,V> lowerEntry(K key)
+  +Entry<K,V> floorEntry(K key)
+  +Entry<K,V> ceilingEntry(K key)
+  +Entry<K,V> higherEntry(K key)
+  +NavigableMap<K,V> descendingMap()
+}
+SortedMap <|-- NavigableMap
+
+@enduml

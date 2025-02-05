@@ -1,0 +1,75 @@
+@startuml JCF
+
+title Java Collections Framework (Simplified)
+
+'===========================================================================
+' Java Collection 框架接口层级
+'===========================================================================
+
+' 根接口
+interface "Iterable<T>" as Iterable {
+  +Iterator<T> iterator()
+}
+
+' Collection 接口, 扩展自 Iterable
+interface "Collection<T>" as Collection {
+  +int size()
+  +boolean isEmpty()
+  +boolean add(T e)
+  +boolean remove(Object o)
+  +boolean contains(Object o)
+}
+Iterable <|-- Collection
+
+' Collection 子接口：
+' List
+interface "List<T>" as List {
+  +T get(int index)
+  +T set(int index, T element)
+  +void add(int index, T element)
+  +T remove(int index)
+}
+Collection <|-- List
+
+' Set
+interface "Set<T>" as Set {
+  +boolean add(T e)
+  +boolean remove(Object o)
+  +boolean contains(Object o)
+}
+Collection <|-- Set
+
+' Queue
+interface "Queue<T>" as Queue {
+  +boolean offer(T e)
+  +T poll()
+  +T peek()
+}
+Collection <|-- Queue
+
+' Deque
+interface "Deque<T>" as Deque {
+  +void addFirst(T e)
+  +void addLast(T e)
+  +T pollFirst()
+  +T pollLast()
+}
+Queue <|-- Deque
+
+' Set 分支的扩展接口
+interface "SortedSet<T>" as SortedSet {
+  +Comparator<? super T> comparator()
+  +T first()
+  +T last()
+}
+Set <|-- SortedSet
+
+interface "NavigableSet<T>" as NavigableSet {
+  +T lower(T e)
+  +T floor(T e)
+  +T ceiling(T e)
+  +T higher(T e)
+}
+SortedSet <|-- NavigableSet
+
+@enduml
