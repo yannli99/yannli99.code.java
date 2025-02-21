@@ -1,19 +1,24 @@
 package com.example.learning.demo.structure.tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 import java.util.function.Consumer;
 
 /**
  * 树的基本操作
  */
-public class TreeOperation {
+public abstract class TreeOperation {
     public static void main(String[] args) {
         Integer[] arr = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         TreeNode<Integer> completeBinaryTree = createCompleteBinaryTree(arr, 0);
-        preorder(completeBinaryTree);
-        System.out.println();
-        inorder(completeBinaryTree);
-        System.out.println();
-        postorder(completeBinaryTree);
+//        preorder(completeBinaryTree);
+//        System.out.println();
+//        inorder(completeBinaryTree);
+//        System.out.println();
+//        postorder(completeBinaryTree);
+//        System.out.println();
+        levelOrder(completeBinaryTree);
         System.out.println();
     }
 
@@ -89,12 +94,37 @@ public class TreeOperation {
         visit(root.val);
     }
 
-    public static <T> void visit(T val) {
+    public static  <T> void visit(T val) {
         visit(val + " ", System.out::print);
     }
 
     private static <T> void visit(T val, Consumer<T> action) {
         action.accept(val);
+    }
+
+    // 层序遍历
+    public static <T> void levelOrder(TreeNode<T> root) {
+        //收集每层元素顺序入队到list里
+        Queue<TreeNode<T>> list = new LinkedList<>();
+        //每层都需要一个队列来处理
+        Queue<TreeNode<T>> queue = new LinkedList<>();
+        //第一层是根节点
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            //上一层顺序出队
+            TreeNode<T> node = queue.poll();
+            //添加到所有元素的list中
+            list.offer(node);
+            //添加上一层的左孩子到这一层的队里
+            if (node.left != null) {
+                queue.offer(node.left);
+            }
+            //层序遍历从左向右，右孩子后入队
+            if (node.right != null) {
+                queue.offer(node.right);
+            }
+        }
+        list.forEach(v -> visit(v.val));
     }
 
     /*------------------ 其他常见操作 ------------------*/
