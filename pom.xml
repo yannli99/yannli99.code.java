@@ -39,6 +39,10 @@
              <module>another-module</module>
         -->
     </modules>
+    <properties>
+        <log4j-api.version>1.7.36</log4j-api.version>
+        <logback.version>1.2.12</logback.version>
+    </properties>
 
     <!-- 可在此处添加依赖管理和插件管理 -->
     <!-- 通过 <dependencyManagement> 标签统一管理依赖版本，
@@ -47,21 +51,34 @@
     <!-- 统一管理依赖版本 -->
     <dependencyManagement>
         <dependencies>
+            <!--单元测试-->
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>4.13.2</version>
                 <scope>test</scope>
             </dependency>
+            <!--json解析-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>2.0.32</version>
             </dependency>
+            <!--日志-->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>2.0.16</version>
+                <version>${log4j-api.version}</version>
+            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>org.slf4j</groupId>-->
+<!--                <artifactId>slf4j-simple</artifactId>-->
+<!--                <version>2.0.17</version>-->
+<!--            </dependency>-->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -77,8 +94,8 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.8.1</version>
                     <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
+                        <source>8</source>
+                        <target>8</target>
                     </configuration>
                 </plugin>
                 <!-- 其他插件管理项 -->
