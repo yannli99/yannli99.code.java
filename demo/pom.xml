@@ -39,6 +39,10 @@
       <artifactId>junit</artifactId>
       <!-- 版本号由父项目的 dependencyManagement 提供 -->
     </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+    </dependency>
   </dependencies>
 
 </project>
