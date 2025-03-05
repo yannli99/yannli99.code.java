@@ -4,45 +4,41 @@
   该文件定义了子项目的基本信息、继承的父项目及依赖信息。
 -->
 <project
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-  <!-- 模型版本，Maven POM 文件的版本定义 -->
-  <modelVersion>4.0.0</modelVersion>
+    <!-- 模型版本，Maven POM 文件的版本定义 -->
+    <modelVersion>4.0.0</modelVersion>
 
-  <!-- 指定父项目的信息，子项目会继承父项目的配置 -->
-  <parent>
-    <!-- 父项目的 groupId -->
-    <groupId>com.example.learning</groupId>
-    <!-- 父项目的 artifactId -->
-    <artifactId>parent-project</artifactId>
-    <!-- 父项目的版本号 -->
+    <!-- 指定父项目的信息，子项目会继承父项目的配置 -->
+    <parent>
+        <!-- 父项目的 groupId -->
+        <groupId>com.example.learning</groupId>
+        <!-- 父项目的 artifactId -->
+        <artifactId>parent-project</artifactId>
+        <!-- 父项目的版本号 -->
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <!-- 子项目的 groupId -->
+    <groupId>com.example.learning.demo</groupId>
+    <!-- 子项目的 artifactId -->
+    <artifactId>demo</artifactId>
+    <!-- 子项目的版本号 -->
     <version>1.0-SNAPSHOT</version>
-  </parent>
 
-  <!-- 子项目的 groupId -->
-  <groupId>com.example.learning.demo</groupId>
-  <!-- 子项目的 artifactId -->
-  <artifactId>demo</artifactId>
-  <!-- 子项目的版本号 -->
-  <version>1.0-SNAPSHOT</version>
+    <!-- 项目名称 -->
+    <name>demo</name>
 
-  <!-- 项目名称 -->
-  <name>demo</name>
-
-  <!-- 项目依赖 -->
-  <dependencies>
-    <!-- 这里无需指定版本号，使用父项目依赖管理中定义的版本 -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <!-- 版本号由父项目的 dependencyManagement 提供 -->
-    </dependency>
-    <dependency>
-      <groupId>com.alibaba</groupId>
-      <artifactId>fastjson</artifactId>
-    </dependency>
-  </dependencies>
+    <!-- 项目依赖 -->
+    <dependencies>
+        <!-- 可以将公用依赖放到common中，然后直接引用common包的依赖  -->
+        <dependency>
+            <groupId>com.example.learning</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

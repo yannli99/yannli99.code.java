@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.example.learning</groupId>
+        <artifactId>parent-project</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>common</artifactId>
+    <version>${parent.version}</version>
+    <name>common</name>
+
+    <!-- 项目依赖 -->
+    <dependencies>
+        <!-- 这里无需指定版本号，使用父项目依赖管理中定义的版本 -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <!-- 版本号由父项目的 dependencyManagement 提供 -->
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+    </dependencies>
+</project>
